@@ -1,0 +1,29 @@
+<!-- code for displaying world map -->
+
+<script>
+var width = window.innerWidth,
+    height = window.innerHeight;
+var svg = d3.select("body").append("svg")
+    .attr("width", width)
+    .attr("height", height)
+
+var projection = d3.geoMercator()
+    .translate([width / 2.2, height / 1.5]);
+
+var path = d3.geoPath()
+    .projection(projection);
+
+// load and display the World
+d3.json("https://unpkg.com/world-atlas@1/world/110m.json", function(error, world) {
+  if (error) throw error;
+  var data = topojson.feature(world, world.objects.countries).features;
+
+  svg.append("g")
+    .attr("class", "world-map map")
+    .selectAll("path")
+    .data(data)
+    .enter().append("path")
+    .attr("d", path);
+});
+
+</script>

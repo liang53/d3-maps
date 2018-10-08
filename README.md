@@ -31,6 +31,22 @@ rails generate model States number:integer code:string name:string
 rake db:migrate
 ```
 
+In the seeds.rb file
+```ruby
+require 'csv'
+tsv_text = File.read(Rails.root.join('assets', 'tsv', 'us_states', 'us-state-names.tsv'))
+tsv = CSV.parse(tsv_text, :headers => true, :col_sep => "\t")
+tsv.each do |row|
+  s = State.new
+  s.number = row['id']
+  s.code = row['code']
+  s.name = row['name']
+  s.save
+end
+
+puts "There are now #{State.count} in the states table"
+```
+
 Seed your database.
 ```ruby
 rake db:seed
@@ -40,10 +56,11 @@ Or reset your database
 rake db:reset
 ```
 
-Host the data as a json file
+Host the data as a json file as part of your application
 ```ruby
 rails generate controller States index
 ```
 Replace the States/states_controller.rb and states/index.html.erb files with the d3maps files.
-
 Display the view/index.html.erb file on the page where the map is suppose to be
+
+To generate the world map, repeat the process and seed your database with data located at at app/tsv/world/world-countries-names.tsv
