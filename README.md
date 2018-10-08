@@ -41,3 +41,5 @@ Host the data as a json file
 rails generate controller States index
 ```
 Replace the States/states_controller.rb and states/index.html.erb files with the d3maps files.
+
+Display the view/index.html.erb file on the page where the map is suppose to be
