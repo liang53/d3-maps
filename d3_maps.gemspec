@@ -6,12 +6,12 @@ require "d3_maps/version"
 Gem::Specification.new do |spec|
   spec.name          = "d3_maps"
   spec.version       = D3Maps::VERSION
-  spec.authors       = ["Shu"]
-  spec.email         = ["shu.liang89@gmail.com"]
+  spec.authors       = ["SBX"]
+  spec.email         = ["shudvprojects@gmail.com"]
 
-  spec.summary       = %q{TODO: Write a short summary, because RubyGems requires one.}
-  spec.description   = %q{TODO: Write a longer description or delete this line.}
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
+  spec.summary       = %q{The gem simplifies the process of creating d3 maps}
+  spec.description   = %q{D3 maps for ruby on rails}
+  spec.homepage      = "http://rubygems.org/gems/"
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
