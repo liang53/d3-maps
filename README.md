@@ -7,7 +7,7 @@ D3Maps Ruby Gem is a gem that simplifies the process of creating maps of the Uni
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'd3_maps'
+gem 'd3_maps', path: "../d3_maps"
 ```
 
 And then execute:
@@ -18,6 +18,10 @@ Or install it yourself as:
 
     $ gem install d3_maps
 
+In app/assets/javascripts/application.js, include
+```ruby
+//= require d3_maps
+```
 ## Usage
 
 Create the database needed to store the information for your project. The database consist of a States table with information on number, code, and name. Number must be included. Code and name are optional values to display.
