@@ -1,8 +1,6 @@
-# D3Maps
+# D3Maps Ruby Gem
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/d3_maps`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+D3Maps Ruby Gem is a gem that simplifies the process of creating maps of the United States and assigning data values to each location.
 
 ## Installation
 
@@ -22,22 +20,24 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Create the database needed to store the information for your project. The database consist of a States table with information on number, code, and name. Number must be included. Code and name are optional values to display.
 
-## Development
+```ruby
+rails generate model States number:integer code:string name:string
+rake db:migrate
+```
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+Seed your database.
+```ruby
+rake db:seed
+```
+Or reset your database
+```ruby
+rake db:reset
+```
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
-
-## Contributing
-
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/d3_maps. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
-
-## License
-
-The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
-
-## Code of Conduct
-
-Everyone interacting in the D3Maps project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/[USERNAME]/d3_maps/blob/master/CODE_OF_CONDUCT.md).
+Host the data as a json file
+```ruby
+rails generate controller States index
+```
+Replace the States/states_controller.rb and states/index.html.erb files with the d3maps files.

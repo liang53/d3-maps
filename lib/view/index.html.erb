@@ -1,0 +1,53 @@
+<svg width="960" height="600"></svg>
+<script src="https://d3js.org/d3.v4.min.js"></script>
+<script src="https://d3js.org/topojson.v2.min.js"></script>
+<script>
+
+var svg = d3.select("svg");
+var path = d3.geoPath();
+
+var names = {};
+d3.json('states/index.json', function(states_json){
+  states_json.forEach(function(d,i){
+    names[d.number] = d.code;
+  })
+});
+
+
+d3.json("https://d3js.org/us-10m.v1.json", function(error, us) {
+  if (error) throw error;
+  var data = topojson.feature(us, us.objects.states).features;
+
+  svg.append("g")
+    .attr("class", "states")
+    .selectAll("path")
+    .data(data)
+    .enter().append("path")
+    .attr("d", path);
+
+  svg.append("g")
+    .attr("class", "states-names")
+    .selectAll("text")
+    .data(data)
+    .enter()
+    .append("svg:text")
+    .text(function(d){
+      n = Number(d.id);
+      return names[n];
+    })
+    .attr("x", function(d){
+        return path.centroid(d)[0];
+    })
+    .attr("y", function(d){
+        return path.centroid(d)[1];
+    })
+    .attr("text-anchor","middle")
+    // .attr('fill', 'white');
+
+
+  svg.append("path")
+      .attr("class", "state-borders")
+      .attr("d", path(topojson.mesh(us, us.objects.states, function(a, b) { return a !== b; })));
+});
+
+</script>

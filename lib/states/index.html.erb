@@ -1,0 +1,19 @@
+<!-- displays in json format for d3 to read and assign appropriate values to the map-->
+
+<h1>Listing posts</h1>
+
+<table>
+  <tr>
+    <th>Number</th>
+    <th>Code</th>
+    <th>Name</th>
+  </tr>
+
+<% @states.each do |state| %>
+  <tr>
+    <td><%= state.number %></td>
+    <td><%= state.code %></td>
+    <td><%= state.name %></td>
+  </tr>
+<% end %>
+</table>
