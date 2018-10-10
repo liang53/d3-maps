@@ -7,7 +7,7 @@ D3Maps Ruby Gem is a gem that simplifies the process of creating maps of the Uni
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'd3_maps', path: "../d3_maps"
+gem 'd3_maps'
 ```
 
 And then execute:
@@ -60,7 +60,9 @@ Host the data as a json file as part of your application
 ```ruby
 rails generate controller States index
 ```
-Replace the States/states_controller.rb and states/index.html.erb files with the d3maps files.
-Display the view/index.html.erb file on the page where the map is suppose to be
+Replace the States/states_controller.rb and states/index.html.erb files with the same files in d3maps.
+
+The map for United states is located in views/welcome/index.html.erb
+The map for the world is located in views/welcome/about.html.erb
 
 To generate the world map, repeat the process and seed your database with data located at at app/tsv/world/world-countries-names.tsv
